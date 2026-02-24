@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Force | Estrutura de Verdade</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= BASE ================= */
+
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  color:#fff;
+  background:
+    linear-gradient(rgba(10,10,13,0.92), rgba(10,10,13,0.92)),
+    url('1.jpg') center/cover no-repeat fixed;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:100px 20px;
+}
+
+h1,h2,h3{
+  margin:0 0 20px 0;
+}
+
+p{
+  color:#cfcfd4;
+  line-height:1.6;
+  font-weight:300;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 32px;
+  border:1px solid #fff;
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* ================= NAV ================= */
+
+nav{
+  position:fixed;
+  width:100%;
+  background:rgba(10,10,13,0.95);
+  backdrop-filter: blur(6px);
+  padding:25px 0;
+  z-index:1000;
+}
+
+.nav-wrapper{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 20px;
+}
+
+nav ul{
+  display:flex;
+  gap:30px;
+  list-style:none;
+  align-items:center;
+}
+
+nav a{
+  text-decoration:none;
+  color:#fff;
+  font-weight:500;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown{
+  position:relative;
+}
+
+.dropdown-menu{
+  position:absolute;
+  top:30px;
+  left:0;
+  background:#18181c;
+  padding:20px;
+  list-style:none;
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  min-width:180px;
+  border:1px solid #2a2a30;
+}
+
+.dropdown-menu li{
+  margin-bottom:8px;
+}
+
+.dropdown-menu a{
+  color:#fff;
+  font-size:14px;
+}
+
+.dropdown:hover .dropdown-menu{
+  display:flex;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.hero h1{
+  font-size:54px;
+  font-weight:600;
+}
+
+.hero p{
+  font-size:18px;
+  margin-top:15px;
+}
+
+/* ================= SECTION FLEX ================= */
+
+.section-flex{
+  display:flex;
+  gap:60px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.section-flex img{
+  width:100%;
+  max-width:550px;
+  border-radius:6px;
+}
+
+.section-flex .text{
+  flex:1;
+}
+
+/* ================= PLANOS ================= */
+
+.plans{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+}
+
+.plan-card{
+  background:#18181c;
+  padding:40px;
+  border:1px solid #2a2a30;
+}
+
+.plan-card h3{
+  font-weight:600;
+}
+
+/* ================= AVALIAÇÕES ================= */
+
+.reviews{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.review{
+  background:#18181c;
+  padding:30px;
+  border-left:3px solid #fff;
+}
+
+/* ================= UNIDADES ================= */
+
+.units{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.unit{
+  background:#18181c;
+  padding:30px;
+  text-align:center;
+  border:1px solid #2a2a30;
+  transition:0.3s;
+}
+
+.unit a{
+  text-decoration:none;
+  color:#fff;
+  font-weight:500;
+}
+
+.unit:hover{
+  background:#202028;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#0a0a0d;
+  padding:80px 20px;
+}
+
+footer .footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:40px;
+}
+
+footer a{
+  color:#cfcfd4;
+  text-decoration:none;
+  display:block;
+  margin-bottom:10px;
+}
+
+footer p{
+  color:#cfcfd4;
+}
+
+@media(max-width:900px){
+  .section-flex{
+    flex-direction:column;
+    text-align:center;
+  }
+  .hero h1{
+    font-size:36px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrapper">
+    <strong>LE FORCE</strong>
+    <ul>
+      <li><a href="#planos">PLANOS</a></li>
+      <li><a href="#avaliacoes">AVALIAÇÕES</a></li>
+
+      <li class="dropdown">
+        <a href="#">UNIDADES ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="sarandi.html">Sarandi</a></li>
+          <li><a href="marialva.html">Marialva</a></li>
+          <li><a href="park.html">Park</a></li>
+          <li><a href="kakogawa.html">Kakogawa</a></li>
+          <li><a href="mandacaru.html">Mandacaru</a></li>
+          <li><a href="jd-brasil.html">Jd Brasil</a></li>
+          <li><a href="jd-oasis.html">Jd Oasis</a></li>
+          <li><a href="alvorada.html">Alvorada</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Mais que treino. Alta performance.</h1>
+    <p>Estrutura moderna. Equipe preparada. Resultado real.</p>
+    <a href="#planos" class="btn">Conheça os Planos</a>
+  </div>
+</section>
+
+<section class="container section-flex">
+  <img src="1.jpg">
+  <div class="text">
+    <h2>Estrutura de Verdade</h2>
+    <p>Equipamentos modernos, ambiente sofisticado e pensado para performance máxima.</p>
+    <a href="#" class="btn">Agendar Visita</a>
+  </div>
+</section>
+
+<section id="planos" class="container">
+  <h2>Planos</h2>
+  <div class="plans">
+    <div class="plan-card">
+      <h3>Start</h3>
+      <p>Acesso completo à estrutura.</p>
+      <a href="#" class="btn">Quero esse</a>
+    </div>
+    <div class="plan-card">
+      <h3>Performance</h3>
+      <p>Treino + acompanhamento.</p>
+      <a href="#" class="btn">Quero esse</a>
+    </div>
+    <div class="plan-card">
+      <h3>Master</h3>
+      <p>Experiência completa Le Force.</p>
+      <a href="#" class="btn">Quero esse</a>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="container">
+  <h2>Quem treina, recomenda</h2>
+  <div class="reviews">
+    <div class="review">“Estrutura impecável e ambiente incrível.”</div>
+    <div class="review">“A melhor academia da região.”</div>
+    <div class="review">“Equipe atenciosa e resultados reais.”</div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Nossas Unidades</h2>
+  <div class="units">
+    <div class="unit"><a href="sarandi.html">Sarandi</a></div>
+    <div class="unit"><a href="marialva.html">Marialva</a></div>
+    <div class="unit"><a href="park.html">Park</a></div>
+    <div class="unit"><a href="kakogawa.html">Kakogawa</a></div>
+    <div class="unit"><a href="mandacaru.html">Mandacaru</a></div>
+    <div class="unit"><a href="jd-brasil.html">Jd Brasil</a></div>
+    <div class="unit"><a href="jd-oasis.html">Jd Oasis</a></div>
+    <div class="unit"><a href="alvorada.html">Alvorada</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+
+    <div>
+      <h3>Le Force</h3>
+      <p>Estrutura de verdade para quem leva resultado a sério.</p>
+      <p>Disciplina. Performance. Evolução.</p>
+    </div>
+
+    <div>
+      <h3>Serviços</h3>
+      <a href="#planos">Planos</a>
+      <a href="#avaliacoes">Avaliação Física</a>
+      <a href="#">Nutrição</a>
+      <a href="#">Aulas Coletivas</a>
+    </div>
+
+    <div>
+      <h3>Horário de Funcionamento</h3>
+      <p>Segunda a Sexta: 06:00 – 23:00</p>
+      <p>Sábado: 08:00 – 16:00</p>
+      <p>Domingo: 08:00 – 12:00</p>
+    </div>
+
+    <div>
+      <h3>Contato</h3>
+      <p>Telefone: (44) 0000-0000</p>
+      <a href="https://wa.me/5544999999999">WhatsApp</a>
+      <a href="https://instagram.com/leforce.oficial" target="_blank">
+        Instagram
+      </a>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;margin-top:60px;color:#888;font-size:14px;">
+    © 2024 Le Force. Todos os direitos reservados.
+  </div>
+</footer>
+
+</body>
+</html>
