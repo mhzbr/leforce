@@ -221,6 +221,79 @@ nav a{
   background:#202028;
 }
 
+
+/* ===== AULAS HOME ===== */
+
+.aulas-home{
+  text-align:center;
+}
+
+.subtitle{
+  color:#aaa;
+  margin-bottom:40px;
+}
+
+.aulas-carousel{
+  position:relative;
+  overflow:hidden;
+}
+
+.aulas-track{
+  display:flex;
+  transition:transform 0.4s ease;
+}
+
+.aula-item{
+  flex:0 0 25%;
+  padding:10px;
+}
+
+.aula-item img{
+  width:100%;
+  border-radius:6px;
+  height:260px;
+  object-fit:cover;
+}
+
+.aula-item h3{
+  margin-top:15px;
+  font-weight:500;
+}
+
+.aulas-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.6);
+  border:none;
+  color:#fff;
+  font-size:22px;
+  padding:10px 14px;
+  cursor:pointer;
+}
+
+.aulas-btn.prev{
+  left:10px;
+}
+
+.aulas-btn.next{
+  right:10px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+  .aula-item{
+    flex:0 0 50%;
+  }
+}
+
+@media(max-width:600px){
+  .aula-item{
+    flex:0 0 100%;
+  }
+}
+
 /* ================= FOOTER ================= */
 
 footer{
@@ -333,6 +406,55 @@ footer p{
   </div>
 </section>
 
+<section class="container aulas-home">
+
+  <h2>Aulas Aeróbicas</h2>
+  <p class="subtitle">
+    Energia, ritmo e performance para elevar seu treino a outro nível.
+  </p>
+
+  <div class="aulas-carousel">
+    <div class="aulas-track">
+      <div class="aula-item">
+        <img src="1.jpg" alt="">
+        <h3>Funcional</h3>
+      </div>
+      <div class="aula-item">
+        <img src="1.jpg" alt="">
+        <h3>HIIT</h3>
+      </div>
+      <div class="aula-item">
+        <img src="1.jpg" alt="">
+        <h3>Ritmos</h3>
+      </div>
+      <div class="aula-item">
+        <img src="1.jpg" alt="">
+        <h3>Step</h3>
+      </div>
+      <div class="aula-item">
+        <img src="1.jpg" alt="">
+        <h3>Funcional</h3>
+      </div>
+      <div class="aula-item">
+        <img src="1.jpg" alt="">
+        <h3>HIIT</h3>
+      </div>
+      <div class="aula-item">
+        <img src="1.jpg" alt="">
+        <h3>Ritmos</h3>
+      </div>
+      <div class="aula-item">
+        <img src="1.jpg" alt="">
+        <h3>Step</h3>
+      </div>
+    </div>
+
+    <button class="aulas-btn prev" onclick="moveAula(-1)">❮</button>
+    <button class="aulas-btn next" onclick="moveAula(1)">❯</button>
+  </div>
+
+</section>
+
 <section class="container">
   <h2>Nossas Unidades</h2>
   <div class="units">
@@ -383,9 +505,35 @@ footer p{
   </div>
 
   <div style="text-align:center;margin-top:60px;color:#888;font-size:14px;">
-    © by MHZ COMPANY. Todos os direitos reservados.
+    © 2024 Le Force. Todos os direitos reservados.
   </div>
 </footer>
+
+<script>
+let aulaIndex = 0;
+const aulaTrack = document.querySelector(".aulas-track");
+const aulaItems = document.querySelectorAll(".aula-item");
+
+function moveAula(direction){
+  const itemsVisible = window.innerWidth < 600 ? 1 :
+                       window.innerWidth < 900 ? 2 : 4;
+
+  aulaIndex += direction;
+
+  const maxIndex = aulaItems.length - itemsVisible;
+
+  if(aulaIndex < 0){
+    aulaIndex = 0;
+  }
+
+  if(aulaIndex > maxIndex){
+    aulaIndex = maxIndex;
+  }
+
+  aulaTrack.style.transform =
+    "translateX(-" + (aulaIndex * (100 / itemsVisible)) + "%)";
+}
+</script>
 
 </body>
 </html>
