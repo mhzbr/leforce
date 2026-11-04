@@ -1239,16 +1239,21 @@ img {
 @media (max-width: 760px) {
 
   /* Imagem exclusiva do 2º banner no mobile */
+  .home-banner-slide:nth-child(2) {
+    background: #000;
+  }
+
   .home-banner-slide:nth-child(2) img {
     content: url("mobile.jpeg");
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
-    transform: none;
+    transform: none !important;
+    background: #000;
   }
 
   .home-banner-slide:nth-child(2).active img {
-    animation: none;
-    transform: none;
+    animation: none !important;
+    transform: none !important;
   }
 
   .home-banner-carousel {
