@@ -1237,6 +1237,12 @@ img {
 }
 
 @media (max-width: 760px) {
+
+  /* Ajuste exclusivo do 2º banner no mobile */
+  .home-banner-slide:nth-child(2) img {
+    object-position: 68% center;
+  }
+
   .home-banner-carousel {
     height: 68vh;
     min-height: 560px;
