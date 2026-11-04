@@ -59,3 +59,55 @@ faqItems.forEach((item) => {
     }
   });
 });
+
+/* HOME BANNER CAROUSEL */
+
+const bannerSlides = document.querySelectorAll(".home-banner-slide");
+const bannerDots = document.querySelectorAll(".home-banner-dots button");
+const bannerPrev = document.querySelector(".home-banner-arrow.prev");
+const bannerNext = document.querySelector(".home-banner-arrow.next");
+let bannerIndex = 0;
+let bannerTimer;
+
+function showBanner(index) {
+  if (!bannerSlides.length) return;
+
+  bannerIndex = (index + bannerSlides.length) % bannerSlides.length;
+
+  bannerSlides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === bannerIndex);
+  });
+
+  bannerDots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === bannerIndex);
+  });
+}
+
+function startBannerAutoplay() {
+  clearInterval(bannerTimer);
+  bannerTimer = setInterval(() => {
+    showBanner(bannerIndex + 1);
+  }, 6500);
+}
+
+if (bannerSlides.length) {
+  bannerPrev?.addEventListener("click", () => {
+    showBanner(bannerIndex - 1);
+    startBannerAutoplay();
+  });
+
+  bannerNext?.addEventListener("click", () => {
+    showBanner(bannerIndex + 1);
+    startBannerAutoplay();
+  });
+
+  bannerDots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      showBanner(i);
+      startBannerAutoplay();
+    });
+  });
+
+  showBanner(0);
+  startBannerAutoplay();
+}
